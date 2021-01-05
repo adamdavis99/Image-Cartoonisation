@@ -1,5 +1,5 @@
 ## Basic Image cartoonisation web app
-#### This is a simple image cartoonisation web app created with Streamlit and OpenCV.
+#### This is a simple image cartoonisation web app created with Streamlit and OpenCV :heart:.
 ##### Any image can be converted to cartoon using edge detection and region smoothing
 
 ![Web app](Images/input.png)
