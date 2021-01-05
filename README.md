@@ -2,9 +2,12 @@
 #### This is a simple image cartoonisation web app created with Streamlit and OpenCV.
 ##### Any image can be converted to cartoon using edge detection and region smoothing
 
-![Web app](Images/input.jpg)
+![Web app](Images/input.png)
 
-![Web app](Images/output.jpg)
+![Web app](Images/output.png)
+
+<br> 
+
 It has got 4 basic filters
 - Pencil sketch
 - Pencil edge
