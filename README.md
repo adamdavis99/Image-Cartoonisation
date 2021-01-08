@@ -1,15 +1,18 @@
-## Basic Image cartoonisation web app
-#### This is a simple image cartoonisation web app created with Streamlit and OpenCV.
+## Basic Image cartoonizer web app
+#### This is a simple image cartoonisation web app created with Streamlit and OpenCV :heart:.
 ##### Any image can be converted to cartoon using edge detection and region smoothing
 
-![Web app](Images/input.jpg)
+![Web app](Images/input.png)
 
-![Web app](Images/output.jpg)
+![Web app](Images/output.png)
+
+<br> 
+
 It has got 4 basic filters
-> Pencil sketch
-> Pencil edge
-> Bilateral filter
-> Detail enhancement filter
+- Pencil sketch
+- Pencil edge
+- Bilateral filter
+- Detail enhancement filter
 
 #### Pencil Sketch
 We first convert the image to gray mode, then use a GaussianBlur filter for image smoothing. The user can choose a kernel size to adjust the **Boldness** of the image. Then we simply divie the orginal image with the blurred image with a value selected by the user, also labelled as **Sharpness**.
