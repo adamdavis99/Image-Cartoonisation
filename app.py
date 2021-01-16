@@ -5,16 +5,16 @@ from PIL import Image
 
 def pencilsketch(img):
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    value=st.sidebar.slider('Tune Brightness of your sketch',0.0,300.0,250.0)
-    kernel=st.sidebar.slider('Tune boldness of edges of image',1,99,25,step=2)
+    value=st.slider('Tune Brightness of your sketch',0.0,300.0,250.0)
+    kernel=st.slider('Tune boldness of edges of image',1,99,25,step=2)
     gray_blur=cv2.GaussianBlur(gray,(kernel,kernel),0)
     cartoon=cv2.divide(gray,gray_blur,scale=value)
     return cartoon
 
 def penciledge(img):
-    kernel=st.sidebar.slider('Sharpness of sketch',1,99,25,step=2)
-    laplacian_filter=st.sidebar.slider('Edge detection power',3,9,3,step=2)
-    noise_reduction=st.sidebar.slider('Noise effects',10,255,150)
+    kernel=st.slider('Sharpness of sketch',1,99,25,step=2)
+    laplacian_filter=st.slider('Edge detection power',3,9,3,step=2)
+    noise_reduction=st.slider('Noise effects',10,255,150)
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     gray=cv2.medianBlur(gray,kernel)
     edges=cv2.Laplacian(gray,-1,ksize=laplacian_filter)
@@ -24,9 +24,9 @@ def penciledge(img):
 
 
 def detailenhance(img):
-    smooth=st.sidebar.slider('Smoothness',3,99,5,step=2)
-    kernel=st.sidebar.slider('Sharpness',1,40,3,step=2)
-    edge_preserve=st.sidebar.slider('Tune Color Averaging effects',0.0,1.0,0.05)
+    smooth=st.slider('Smoothness',3,99,5,step=2)
+    kernel=st.slider('Sharpness',1,40,3,step=2)
+    edge_preserve=st.slider('Tune Color Averaging effects',0.0,1.0,0.05)
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     gray=cv2.medianBlur(gray,kernel)
     edges=cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,9,9)
@@ -36,9 +36,9 @@ def detailenhance(img):
 
 def bilateral(img):
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    smooth=st.sidebar.slider('Smoothness',3,99,5,step=2)
-    kernel=st.sidebar.slider('Sharpness',1,21,3,step=2)
-    edge_preserve=st.sidebar.slider('Tune Color Averaging effects',1,100,50)
+    smooth=st.slider('Smoothness',3,99,5,step=2)
+    kernel=st.slider('Sharpness',1,21,3,step=2)
+    edge_preserve=st.slider('Tune Color Averaging effects',1,100,50)
     gray=cv2.medianBlur(gray,kernel)
     edges=cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,9,9)
     color=cv2.bilateralFilter(img,smooth,edge_preserve,smooth)
@@ -48,13 +48,13 @@ def bilateral(img):
 
 st.title("Basic Image Editor")
 #st.write(""" # Cartoonize Your Image! """)
-file=st.sidebar.file_uploader("Upload an Image file",type=["jpg","png"])
+file=st.file_uploader("Upload an Image file",type=["jpg","png"])
 if(file is None):
     st.write("Oops! You haven't uploaded any image file")
 else:
     img=Image.open(file)
     img=np.array(img)
-    option=st.sidebar.selectbox('Select the filters you wish to apply',('Pencil sketch','Pencil edge','Detail Enhance','Bilateral Filter'))
+    option=st.selectbox('Select the filters you wish to apply',('Pencil sketch','Pencil edge','Detail Enhance','Bilateral Filter'))
     st.text("Your Original Image")
     st.image(img,use_column_width=True)
     if(option=='Pencil sketch'):
