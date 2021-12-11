@@ -31,3 +31,5 @@ Image converted to grayscale, applied a medianBlur() filter with a kernel termed
 #### Detail Enhancement filter
 This is almost same as Bilateral filter, except, we apply a **detailEnhance()** filter instead of the *bilateralFilter()*. It has 2 parameters which we take input from the user. A **sigma_s** parameter which specifies the *smoothness* of the image. Another **sigma_r** which preserves the edges while image smoothing. Small value leads to similar colors being averaged, while colors that differ much will stay intact. This is taken input from user as **tune color averaging effects**. Then we use the result of adaptive threshold as a mask. Then, merge the result of the detail enhancement filter based on the value of the mask to create well-defined edges, which is the basis for cartoonisation. 
 
+### A procfile is a special file that specifies the commands that are executed by the app on startup. You can use a Procfile to declare a variety of process types.
+For more info, visit https://devcenter.heroku.com/articles/procfile
